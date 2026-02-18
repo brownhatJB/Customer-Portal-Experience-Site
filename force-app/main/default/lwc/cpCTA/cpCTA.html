@@ -1,0 +1,68 @@
+<template>
+    <section class="cta-section">
+        <div class="cta-container">
+
+            <!-- LEFT CONTENT -->
+            <div class="cta-copy">
+                <span class="cta-eyebrow">Book a Visit</span>
+                <h2>
+                    Discover your next<br />
+                    <span class="gold">dream home</span>
+                </h2>
+                <p>
+                    Schedule a private walkthrough with our experts.
+                    No spam. No pressure.
+                </p>
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="cta-form">
+                <template if:false={isSubmitted}>
+                    <div class="form-grid">
+                        <lightning-input label="First Name" value={firstName}
+                            onchange={handleChange} data-field="firstName">
+                        </lightning-input>
+
+                        <lightning-input label="Last Name" value={lastName}
+                            onchange={handleChange} data-field="lastName" required="true">
+                        </lightning-input>
+
+                        <lightning-input type="email" label="Email"
+                            value={email} onchange={handleChange}
+                            data-field="email">
+                        </lightning-input>
+
+                        <lightning-input type="tel" label="Phone"
+                            value={phone} onchange={handleChange}
+                            data-field="phone">
+                        </lightning-input>
+
+                        <lightning-input label="Company"
+                            value={company} onchange={handleChange}
+                            data-field="company" required="true">
+                        </lightning-input>
+                    </div>
+                    <lightning-textarea label="Message"
+                        value={description}
+                        onchange={handleChange}
+                        data-field="description">
+                    </lightning-textarea>
+
+                    <button class="cta-button" onclick={handleSubmit}>
+                        Request Enquiry
+                    </button>
+                </template>
+
+                <template if:true={isSubmitted}>
+                    <div class="success-state">
+                        <div class="check">✓</div>
+                        <h3>Enquiry Requested</h3>
+                        <p>
+                            Our team will contact you shortly to confirm the visit.
+                        </p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+</template>

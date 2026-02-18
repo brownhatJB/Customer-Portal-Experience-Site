@@ -1,0 +1,93 @@
+:host {
+    --gold: #D4AF37;
+    --white: #FCFAF8;
+    --black: #1A1A1A;
+}
+
+.testimonial-page {
+    background-color: var(--white);
+    min-height: 100vh;
+}
+.testimonial-section {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    background: var(--black);
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+    min-height: 85vh;
+    border-radius: 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.marquee {
+    overflow: hidden;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 40px;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    align-items: center;
+}
+
+.card {
+    min-width: 360px;
+    min-height: 420px;
+    background: #fff;
+    border-radius: 28px;
+    padding: 32px;
+    transform-origin: center center;
+    cursor: pointer;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    position: relative;
+}
+
+.card h4 {
+    margin: 0 0 12px;
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 1.4rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    font-family: 'Cormorant Garamond', serif; 
+    line-height: 1.6;
+    color: #333;
+}
+
+.testimonial-heading {
+    font-size: 3rem;
+    color: var(--gold);
+    font-weight: 600;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    margin-top: 7rem;
+    margin-left: 9rem;
+}
+
+.icon-wrapper {
+    height: 48px;
+    width: 48px;
+    color: purple;
+    bottom: -70px;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 8px;
+    position: relative;
+}
+
+.rating {
+    position: relative;
+    height: 48px;
+    width: 48px;
+    left: 40%;
+    transform: translate(-50%);
+    margin-top: 1rem;
+}

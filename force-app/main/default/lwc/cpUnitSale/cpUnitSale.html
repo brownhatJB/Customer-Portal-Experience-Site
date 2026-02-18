@@ -1,0 +1,210 @@
+<template>
+    <template if:true={sales.length}>
+        <div class="header-container">
+            <header class="purchase-header">
+                <h2>My Purchases</h2>
+            </header>
+        </div>
+        <template for:each={sales} for:item="sale">
+            <section key={sale.unitSale.Id} class="unit-sale-section">
+                <div class="unit-sale-container">
+
+                    <!-- LEFT STORY PANEL -->
+                    <div class="unit-sale-copy">
+                        <h2>
+                            <template if:true={sale.unitSale.Unit__r}>
+                                {sale.unitSale.Unit__r.Name}
+                            </template>
+                            <br />
+                            <span class="gold">Unit Sale</span>
+                        </h2>
+
+                        <p>
+                            <template if:true={sale.unitSale.Primary_Contact__r}>
+                                Purchased by <strong>{sale.unitSale.Primary_Contact__r.Name}</strong><br />
+                            </template>
+                            <span>on: </span>
+                            <lightning-formatted-date-time
+                                value={sale.unitSale.CreatedDate}
+                                year="numeric"
+                                month="long"
+                                day="2-digit">
+                            </lightning-formatted-date-time>
+                        </p>
+
+                        <div class="meta">
+                            <div>
+                                <span>Sale ID: </span>
+                                <strong>{sale.unitSale.Name}</strong>
+                            </div>
+                            <div>
+                                <template if:true={sale.unitSale.Status__c}>
+                                    <span>Status: </span>
+                                    <strong class="status">{sale.unitSale.Status__c}</strong>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT CARD -->
+                    <div class="unit-sale-card">
+                        <div class="tab-header">
+                            <button
+                                class={sale.activeDetailsTab}
+                                data-id={sale.unitSale.Id}
+                                data-tab="details"
+                                onclick={switchTab}>
+                                Details
+                            </button>
+                            <button
+                                class={sale.activePaymentsTab}
+                                data-id={sale.unitSale.Id}
+                                data-tab="payments"
+                                onclick={switchTab}>
+                                Payment Plan
+                            </button>
+                            <button
+                                class={sale.activeInvoicesTab}
+                                data-id={sale.unitSale.Id}
+                                data-tab="invoices"
+                                onclick={switchTab}>
+                                Invoices
+                            </button>
+                            <button 
+                                class={sale.activeReceiptsTab}
+                                data-id={sale.unitSale.Id}
+                                data-tab="receipts"
+                                onclick={switchTab}>
+                                Receipts
+                            </button>
+                        </div>
+
+                        <!-- DETAILS -->
+                        <template if:true={sale.showDetails}>
+                            <div class="card-content">
+                                <template if:true={sale.unitSale.Project__r}>
+                                    <div class="info-row">
+                                        <span>Project: </span>
+                                        <strong>{sale.unitSale.Project__r.Name}</strong>
+                                    </div>
+                                </template>
+                                <template if:true={sale.unitSale.Property__r}>
+                                    <div class="info-row">
+                                        <span>Property: </span>
+                                        <strong>{sale.unitSale.Property__r.Name}</strong>
+                                    </div>
+                                </template>
+                                <template if:true={sale.unitSale.Unit_Price__c}>
+                                    <div class="info-row">
+                                        <span>Total Price: </span>
+                                        <lightning-formatted-number
+                                            value={sale.unitSale.Unit_Price__c}
+                                            format-style="currency">
+                                        </lightning-formatted-number>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+
+                        <!-- PAYMENT PLAN -->
+                        <template if:true={sale.showPayments}>
+                            <div class="card-content">
+                                <template if:true={sale.paymentItems.length}>
+                                    <div class="payments-header">
+                                        <span>Installment</span>
+                                        <span>Due</span>
+                                        <span>Amount</span>
+                                        <span>Invoice</span>
+                                    </div>
+                                    <div class="table-scroll">
+                                        <template for:each={sale.paymentItems} for:item="item">
+                                            <div key={item.Id} class="payment-row">
+                                                <span>{item.Payment_Plan_Item_Name__c}</span>
+                                                <lightning-formatted-date-time
+                                                    value={item.Actual_Due_Date__c}
+                                                    year="numeric"
+                                                    month="short"
+                                                    day="2-digit">
+                                                </lightning-formatted-date-time>
+                                                <lightning-formatted-number
+                                                    value={item.Amount__c}
+                                                    format-style="currency">
+                                                </lightning-formatted-number>
+                                                <span class="pill">{item.Status__c}</span>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        <!-- Invoice section-->
+                         <template if:true={sale.showInvoices}>
+                            <div class="card-content">
+                                <template if:true={sale.invoices.length}>
+                                    <div class="invoice-header">
+                                        <span>Installment</span>
+                                        <span>Amount Exc Tax</span>
+                                        <span>Tax</span>
+                                        <span>Total Amount</span>
+                                    </div>
+                                    <div class="table-scroll">
+                                        <template for:each={sale.invoices} for:item="inv">
+                                            <div key={inv.Id} class="invoice-row">
+                                                <span>{inv.Payment_Plan_Item__r.Payment_Plan_Item_Name__c}</span>
+                                                <lightning-formatted-number
+                                                    value={inv.Total_Amount_Excluding_Tax__c}
+                                                    format-style="currency">
+                                                </lightning-formatted-number>
+                                                <lightning-formatted-number
+                                                    value={inv.Tax_Value__c}
+                                                    format-style="currency">
+                                                </lightning-formatted-number>
+                                                <lightning-formatted-number
+                                                    value={inv.Invoice_Amount__c}
+                                                    format-style="currency">
+                                                </lightning-formatted-number>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                         </template>
+                        <!-- Receipts Section -->
+                         <template if:true={sale.showReceipts}>
+                            <div class="card-content">
+                                <template if:true={sale.receipts.length}>
+                                    <div class="receipt-header">
+                                        <span>ID</span>
+                                        <span>Mode</span>
+                                        <span>Amount</span>
+                                        <span>Voucher #</span>
+                                        <span>Date</span>
+                                    </div>
+                                    <div class="table-scroll">
+                                        <template for:each={sale.receipts} for:item="rec">
+                                            <div key={rec.Id} class="receipt-row">
+                                                <span>{rec.Name}</span>
+                                                <span>{rec.Mode__c}</span>
+                                                <lightning-formatted-number
+                                                    value={rec.Amount__c}
+                                                    format-style="currency">
+                                                </lightning-formatted-number>
+                                                <span>{rec.Receipt_Voucher_No__c}</span>
+                                                <lightning-formatted-date-time 
+                                                    value={rec.Receipt_Date__c}
+                                                    year="numeric"
+                                                    month="short"
+                                                    day="2-digit">
+                                                </lightning-formatted-date-time>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                         </template>
+                    </div>
+                </div>
+            </section>
+        </template>
+    </template>
+</template>

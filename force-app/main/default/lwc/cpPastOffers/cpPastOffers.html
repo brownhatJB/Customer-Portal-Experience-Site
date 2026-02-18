@@ -1,0 +1,42 @@
+<template>
+    <div class="offers-wrapper">
+        <header class="section-header">
+            <h2>Past Offers</h2>
+        </header>
+        <div class="table-header">
+            <span>Offer Id</span>
+            <span>Date</span>
+            <span>Unit</span>
+            <span>Unit Price</span>
+        </div>
+
+        <template if:true={offers.length}>
+            <template for:each={offers} for:item="offer">
+                <div key={offer.Id} class="table-row">
+                    <span>{offer.Name}</span>
+                    <span>
+                        <lightning-formatted-date-time
+                            value={offer.CreatedDate}
+                            year="numeric"
+                            month="short"
+                            day="2-digit">
+                        </lightning-formatted-date-time>
+                    </span>
+                    <span>{offer.Unit__r.Name}</span>
+                    <span>
+                        <lightning-formatted-number
+                            value={offer.Unit_Price__c}
+                            format-style="currency">
+                        </lightning-formatted-number></span>
+                </div>
+            </template>
+        </template>
+
+        <template if:false={offers.length}>
+            <div class="empty-state">
+                No past offers found.
+            </div>
+        </template>
+    </div>
+</template>
+

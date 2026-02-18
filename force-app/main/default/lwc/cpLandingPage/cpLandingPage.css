@@ -1,0 +1,10 @@
+:host {
+    --gold: #D4AF37;
+    --white: #FCFAF8;
+    --black: #1A1A1A;
+}
+.landing-wrapper {
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+}

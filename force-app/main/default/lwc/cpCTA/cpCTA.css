@@ -1,0 +1,113 @@
+.cta-section {
+    margin: 6rem;
+    padding: 6rem;
+    background: linear-gradient(
+        135deg,
+        #0f0f0f,
+        #1a1a1a
+    );
+    border-radius: 64px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle gold noise / glow */
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(212,175,55,0.15),
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+.cta-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.cta-copy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    line-height: 1.1;
+    color: #fff;
+}
+
+.cta-copy .gold {
+    color: #D4AF37;
+}
+
+.cta-copy p {
+    margin-top: 1.5rem;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* FORM CARD */
+.cta-form {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 36px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+/* CTA BUTTON */
+.cta-button {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 999px;
+    border: none;
+    background: #D4AF37;
+    color: #1a1a1a;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(212,175,55,0.45);
+}
+
+.success-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.success-state .check {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: #D4AF37;
+    color: #1a1a1a;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+}
+
+.success-state h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.success-state p {
+    color: #666;
+}
+
+.cta-eyebrow {
+    color: rgba(255,255,255,0.7);
+}

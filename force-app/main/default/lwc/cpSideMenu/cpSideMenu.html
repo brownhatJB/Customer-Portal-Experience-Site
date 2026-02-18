@@ -1,0 +1,66 @@
+<template>
+    <!-- Menu Button -->
+    <button class="menu-btn" onclick={toggleMenu} aria-label="Open menu">
+        <template if:false={isOpen}>
+            ☰
+        </template>
+        <template if:true={isOpen}>
+            ✕
+        </template>
+    </button>
+
+    <!-- Overlay -->
+    <div class="overlay" onclick={closeMenu}></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <nav class="menu" aria-label="Main navigation">
+            <ul class="menu-list">
+                <li>
+                    <a href="/" class="menu-item">
+                        <span class="text text-top">Home</span>
+                        <span class="text text-bottom">Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/units" class="menu-item">
+                        <span class="text text-top">Units</span>
+                        <span class="text text-bottom">Units</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/appointments" class="menu-item">
+                        <span class="text text-top">Appointments</span>
+                        <span class="text text-bottom">Appointments</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href={accountLink} class="menu-item">
+                        <span class="text text-top">Account</span>
+                        <span class="text text-bottom">Account</span>
+                    </a>
+                </li>
+
+                <li class="divider" role="separator"></li>
+
+                <li>
+                    <template if:true={isGuestUser}>
+                        <a href="/login" class="menu-item accent">
+                            <span class="text text-top">Login</span>
+                            <span class="text text-bottom">Login</span>
+                        </a>
+                    </template>
+                    <template if:false={isGuestUser}>
+                        <a href={logoutLink} class="menu-item accent">
+                            <span class="text text-top">Logout</span>
+                            <span class="text text-bottom">Logout</span>
+                        </a>
+                    </template>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+</template>

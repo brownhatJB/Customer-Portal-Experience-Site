@@ -1,0 +1,33 @@
+<template>
+    <div class="enquiries-wrapper">
+        <header class="section-header">
+            <h2 class="enquiry-header">Past Enquiries</h2>
+        </header>
+        <div class="table-header">
+            <span>Date</span>
+            <span>Name</span>
+        </div>
+
+        <template if:true={enquiries.length}>
+            <template for:each={enquiries} for:item="enquiry">
+                <div key={enquiry.Id} class="table-row">
+                    <span>
+                        <lightning-formatted-date-time
+                            value={enquiry.CreatedDate}
+                            year="numeric"
+                            month="short"
+                            day="2-digit">
+                        </lightning-formatted-date-time>
+                    </span>
+                    <span>{enquiry.Name}</span>
+                </div>
+            </template>
+        </template>
+
+        <template if:false={enquiries.length}>
+            <div class="empty-state">
+                No past enquiries found.
+            </div>
+        </template>
+    </div>
+</template>

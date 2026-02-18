@@ -1,0 +1,30 @@
+:host {
+    --gold: #D4AF37;
+    --white: #FCFAF8;
+    --black: #1A1A1A;
+}
+
+.section-head {
+    margin-bottom: 0;
+    padding-left: 5vh;
+    padding-top: 10vh;
+    background-color: var(--white);
+}
+
+.tagline-gold {
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.heading-black {
+    color: var(--black);
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    margin: 0;
+}

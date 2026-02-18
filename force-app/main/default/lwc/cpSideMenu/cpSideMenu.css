@@ -1,0 +1,217 @@
+:host {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    pointer-events: none;
+
+    --gold: #D4AF37;
+    --white: #FCFAF8;
+    --black: #000000;
+}
+
+/* =========================
+   MENU BUTTON (HAMBURGER)
+========================= */
+
+.menu-btn {
+    pointer-events: auto;
+    position: fixed;
+    top: 28px;
+    right: 28px;
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    font-size: 28px;
+    line-height: 1;
+    color: var(--gold);
+
+    z-index: 1002;
+    transition: transform 0.3s ease;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay {
+    pointer-events: auto;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    pointer-events: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 500px;
+
+    background: var(--black);
+    padding: 120px 64px;
+
+    z-index: 1001;
+}
+
+/* =========================
+   MENU LAYOUT
+========================= */
+
+.menu {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    position: relative;
+    left: -3rem;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   MENU ITEM (NOW LINKS)
+========================= */
+
+.menu-item {
+    text-transform: uppercase;
+    position: relative;
+    display: block;
+
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+
+    height: 4rem;
+    
+    margin-bottom: 6px;
+    width: 450px;
+
+}
+
+/* =========================
+   TEXT LAYERS (ANIMATION CORE)
+========================= */
+
+.menu-item .text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    width: 100%;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 550;
+
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+    color: #ffffff;
+
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+
+    
+}
+
+/* Visible - centered properly */
+.text-top {
+    transform: translateY(-50%);
+    transition-delay: 0.15s;
+}
+
+/* Hidden above */
+.text-bottom {
+    transform: translateY(-150%);
+    transition-delay: 0s;
+}
+
+/* Hover */
+.menu-item:hover .text-top,
+.menu-item:focus .text-top {
+    transform: translateY(50%);
+    transition-delay: 0s;
+}
+
+.menu-item:hover .text-bottom,
+.menu-item:focus .text-bottom {
+    transform: translateY(-50%);
+    transition-delay: 0.15s;
+}
+
+/* Focus outline for accessibility */
+.menu-item:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
+/* =========================
+   ACCENT ITEM (LOGIN)
+========================= */
+
+.menu-item.accent .text {
+    color: var(--gold);
+    text-align: left;
+}
+
+.menu-item.accent {
+    background: transparent;
+    border: none;
+}
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 24px 0;
+    list-style: none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100vw;
+        padding: 100px 32px;
+    }
+
+    .menu-item {
+        height: 4.8rem;
+    }
+
+    .menu-item .text {
+        font-size: 3.8rem;
+    }
+}

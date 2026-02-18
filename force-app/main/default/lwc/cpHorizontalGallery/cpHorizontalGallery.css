@@ -1,0 +1,52 @@
+:host {
+    --gold: #D4AF37;
+    --white: #FCFAF8;
+}
+.horizontal-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--white);
+}
+
+.pin-wrap {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-track {
+    display: flex;
+    gap: 5vw;
+    padding: 0 10vw;
+}
+
+.panel {
+    flex: 0 0 500px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.panel:hover {
+    transform: translateY(-10px);
+}
+
+.panel img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+img {
+    border: #D4AF37 solid 12px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.4);
+}

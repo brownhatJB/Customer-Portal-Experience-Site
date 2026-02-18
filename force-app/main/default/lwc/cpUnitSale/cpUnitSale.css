@@ -1,0 +1,243 @@
+:host {
+    --gold: #D4AF37;
+    --white: #FCFAF8;
+    --black: #1A1A1A;
+
+    display: block;
+    background: var(--white);
+    color: var(--black);
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+.unit-sale-section {
+    margin-bottom: 6rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-top: 0;
+    padding: 6rem;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    border-radius: 64px;
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+}
+
+.unit-sale-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(212,175,55,0.15),
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+.unit-sale-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    margin: 2.5rem 0;
+}
+
+.unit-sale-copy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: #fff;
+}
+
+.gold {
+    color: #D4AF37;
+}
+
+.meta {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.unit-sale-card {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 36px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    min-height: 50vh;
+    min-width: 37vw;
+}
+
+/* Tabs */
+.tab-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab {
+    background: none;
+    border: none;
+    font-weight: 600;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.tab.active {
+    opacity: 1;
+    border-bottom: 2px solid #D4AF37;
+}
+
+/* Payment rows */
+.payments-header,
+.payment-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 0.8fr;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.payments-header {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    border-bottom: 1px solid #eee;
+}
+
+.payment-row {
+    font-size: 14px;
+}
+
+.pill {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(212,175,55,0.15);
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.unit-sale-copy p {
+    color: rgba(255,255,255,0.7);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.purchase-header h2 {
+    font-size: 3.5rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    font-family: 'Cormorant Garamond', serif; 
+    font-style: italic;
+    color: var(--gold);
+}
+ 
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+    background: var(--white);
+    border: 1px solid var(--white);
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #d4af37, #f4d03f);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.info-row:hover {
+    border-color: #d4af37;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+    transform: translateX(4px);
+}
+
+.info-row:hover::before {
+    opacity: 1;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-row span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.info-row strong,
+.info-row lightning-formatted-number {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    font-variant-numeric: tabular-nums;
+}
+
+.invoice-header,
+.invoice-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.8fr 1fr;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.invoice-header {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    border-bottom: 1px solid #eee;
+}
+
+.invoice-row {
+    font-size: 14px;
+}
+
+.receipt-header,
+.receipt-row {
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr 1fr 1.2fr 1fr;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.receipt-header {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    border-bottom: 1px solid #eee;
+}
+
+.receipt-row {
+    font-size: 14px;
+}
+
+.table-scroll {
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 6px;
+}

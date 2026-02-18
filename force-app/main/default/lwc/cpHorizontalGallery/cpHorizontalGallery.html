@@ -1,0 +1,13 @@
+<template>
+    <section class="horizontal-section">
+        <div class="pin-wrap">
+            <div class="horizontal-track">
+                <template for:each={images} for:item="img">
+                    <div class="panel" key={img.id}>
+                        <img src={img.url} alt="Project image" />
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+</template>

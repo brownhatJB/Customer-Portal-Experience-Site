@@ -1,0 +1,122 @@
+:host {
+    --gold: #D4AF37;
+    --white: #FCFAF8;
+    --grey: #666;
+    --black: #1A1A1A;
+}
+
+.features {
+    padding-top: 8rem;
+    padding-left: 8rem;
+    padding-right: 4rem;
+    padding-bottom: 10vh;
+    background-color: var(--white);
+    border-top: rgb(0 0 0 / 10%) 1px solid;
+    border-bottom: rgb(0 0 0 / 10%) 1px solid;
+}
+
+.golden-title {
+    color: var(--gold);
+    font-size: 0.75rem;
+
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.heading-grey {
+    color: var(--grey);
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 1.875rem;
+    line-height: 3rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.heading-black {
+    color: var(--black);
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 3.75rem;
+    line-height: 3rem;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 6px;
+    margin-bottom: 1.5rem;
+}
+.feature-intro {
+    grid-area: intro;
+    padding-top: 8rem;
+}
+
+.feature-1 {
+    grid-area: feature-1;
+}
+
+.feature-2 {
+    grid-area: feature-2;
+}
+
+.feature-3 {
+    grid-area: feature-3;
+}
+
+.feature-4 {
+    grid-area: feature-4;
+}
+
+.features {
+    display: grid;
+    grid-template-areas: "intro feature-1 feature-2"
+                         "intro feature-3 feature-4";
+    row-gap: 5rem;
+    column-gap: 3rem;
+}
+
+.feature-1 .feature-para {
+    border-left: rgb(0 0 0 / 10%) 1px solid;
+    padding-left: 1.5rem;
+}
+
+.feature-2 .feature-para {
+    border-left: rgb(0 0 0 / 10%) 1px solid;
+    padding-left: 1.5rem;
+}
+
+.feature-3 .feature-para {
+    border-left: rgb(0 0 0 / 10%) 1px solid;
+    padding-left: 1.5rem;
+}
+
+.feature-4 .feature-para {
+    border-left: rgb(0 0 0 / 10%) 1px solid;
+    padding-left: 1.5rem;
+}
+
+.icon-wrapper {
+    height: 40px;
+    width: 40px;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.feature-1:hover .icon-wrapper {
+    transform: translateY(-5px) scale(1.1);
+    color: var(--black);
+}
+
+.feature-2:hover .icon-wrapper {
+    transform: translateY(-5px) scale(1.1);
+    color: var(--black);
+}
+
+.feature-3:hover .icon-wrapper {
+    transform: translateY(-5px) scale(1.1);
+    color: var(--black);
+}
+
+.feature-4:hover .icon-wrapper {
+    transform: translateY(-5px) scale(1.1);
+    color: var(--black);
+}
