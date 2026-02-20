@@ -109,4 +109,12 @@ export default class CpSideMenu extends LightningElement {
             return '/account';
         }
     }
+
+    get appointmentLink() {
+        if(isGuest) {
+            return '/login';
+        } else {
+            return '/appointments';
+        }
+    }
 }
