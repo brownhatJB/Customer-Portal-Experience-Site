@@ -7,7 +7,7 @@
  * Last Modified Date: 
  *******************************************************/
 
-import { LightningElement } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import { loadScript } from 'lightning/platformResourceLoader';
 import GSAP_ZIP from '@salesforce/resourceUrl/gsap_lib'; 
 import MD_HERO_IMG from '@salesforce/resourceUrl/MDRealtyHero';
@@ -27,7 +27,7 @@ export default class MdHeroSection extends LightningElement {
             loadScript(this, GSAP_ZIP + '/SplitText.min.js')
         ])
         .then(() => {
-            this.initAnimations();
+            gsap.registerPlugin(ScrollTrigger, SplitText);
         })
         .catch(error => {
             console.error('Error loading GSAP', error);
@@ -85,6 +85,11 @@ export default class MdHeroSection extends LightningElement {
                 scrub: true // Ties the animation to the scrollbar
             }
         });
+    }
+
+    @api 
+    startHeroAnimations() {
+        this.initAnimations();
     }
 
 }
